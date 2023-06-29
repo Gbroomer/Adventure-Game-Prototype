@@ -18,9 +18,9 @@
       "wis-mod": 4,
       "int-mod": 4,
       "cha-mod": 4,
-      "potions": 0,
+      "potions": 1,
       "gold": 0,
-      "key": 0,
+      "key": 1,
       "main-hand": {
         "id": 5,
         "name": "punch",
@@ -54,16 +54,17 @@
         "stat": "int-mod"
       },
       "spell-2": {
+        "id": 8,
         "name": "empty",
         "type": "spell-2",
         "damage": 2,
         "stat": "str-mod"
       },
       "spell-3": {
-        "name": "empty",
+        "name": "vicious mockery",
         "type": "spell-3",
-        "damage": 2,
-        "stat": "str-mod"
+        "damage": 6,
+        "stat": "int-mod"
       },
       "spell-4": {
         "name": "empty",
@@ -233,6 +234,75 @@
         "stat": "str-mod"
       },
       "id": 3
+    },
+    {
+      "name": "Tonkotsu Ramen",
+      "currentHp": 12,
+      "totalHp": 12,
+      "AC": 12,
+      "str": 14,
+      "dex": 14,
+      "con": 12,
+      "wis": 10,
+      "int": 14,
+      "cha": 8,
+      "str-mod": 2,
+      "dex-mod": 2,
+      "con-mod": 1,
+      "wis-mod": 0,
+      "int-mod": 2,
+      "cha-mod": -1,
+      "potions": 0,
+      "main-hand": {
+        "id": 5,
+        "name": "punch",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "off-hand": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "armor": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "ranged": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "gold": 0,
+      "key": 0,
+      "spell-1": {
+        "id": 6,
+        "name": "firebolt",
+        "damage": 6,
+        "stat": "int-mod"
+      },
+      "spell-2": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-3": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-4": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-5": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "id": 4
     }
   ],
   "Monsters": [
@@ -261,18 +331,19 @@
       "id": 2,
       "type": "monster",
       "name": "Zombie",
-      "Hp": 8,
+      "Hp": 15,
       "AC": 7,
-      "str-mod": 2,
-      "dex-mod": -3,
-      "con-mod": 3,
-      "wis-mod": -4,
-      "int-mod": -4,
-      "cha-mod": -4,
+      "attackStat": 3,
+      "str-mod": -1,
+      "dex-mod": 3,
+      "con-mod": 1,
+      "wis-mod": 1,
+      "int-mod": -2,
+      "cha-mod": -1,
       "damage": 6,
-      "item": "",
-      "gold": 2,
-      "description": "A mass of rotten skin, explosed muscle and protruding bones stands before you. Whoever this person was before, they are now an undead abomination. Do you want to Attack them or try to Leave?",
+      "item": 7,
+      "gold": 3,
+      "description":"A mass of rotten skin, explosed muscle and protruding bones stands before you. Whoever this person was before, they are now an undead abomination. Do you want to Attack them or try to Leave?",
       "combat": "The Zombie is shambling towards you, how would you like to attack?",
       "prelude": "The smell of rotten flesh accompanies low, gutteral moans. Something is shambling in here. ",
       "attack": "The Zombie charges you, attempting to slam and bite you with what remains of its jaw."
@@ -285,6 +356,7 @@
       "name": "Gertrude",
       "Hp": 4,
       "AC": 10,
+      "attackStat": 1,
       "str-mod": 1,
       "dex-mod": 0,
       "con-mod": 0,
@@ -297,12 +369,12 @@
       "description": "A strange woman dressed in an ill fitted wedding dress stands before you. 'Are you here to try and marry me as well? The last person who tried just died! HAH! You'll be next if you aren't careful! I'll show you! I will! Don't test me!' How do you want to respond? You could Attack her, try to Calm her down, Leave her to her devices or Seduce her.",
       "prelude": "you hear sounds of someone crying. It is a deep, low sob intermixed with light giggling. ",
       "attack": "The woman swings wildly at you with a dagger!",
-      "combat": "The woman draws a hidden dagger and stands ready to fight back.",
+      "combat": "The woman weilds her dagger and stands ready to fight back.",
       "option1": "calm",
       "option1Test": "wis-mod",
       "option1Good": "Thank you, I've calmed a little. This was my Mother's doing, you know. She always wished for me to marry. Now I'm a murderer. You were kind--I want you to have this.",
       "option1GoodRes": "item",
-      "option1Bad": "You presume much about me! What could you even know! GET AWAY FROM ME!",
+      "option1Bad": "`You presume much about me! What could you even know! GET AWAY FROM ME!` You should probably Leave.",
       "option2": "seduce",
       "option2Test": "cha-mod",
       "option2Good": "My, what a charmer you are! Maybe romance isn't dead after all. Here, I want you to have this. Find me when we both get out of here, but Leave me for now. I need to clear my head.",
@@ -382,12 +454,12 @@
       "description": "A large, very heavy trunk sits in front of you. There is a lock on it. What would you like to do? You could Bash it open, Leave it alone, try to Pick the lock, or use a Key if you have one.",
       "prelude": "the room seems oddly quiet. There is no odor or sights that immediately catch your attention. ",
       "option1": "bash",
-      "option1Test": "str",
+      "option1Test": "str-mod",
       "option1Good": "You manage to successfully destroy the lock, recieving the truck's content.",
       "option1GoodRes": "pot",
       "option1Bad": "You completely fail to destroy the lock, and now you've hurt yourself.",
       "option2": "pick",
-      "option2Test": "dex",
+      "option2Test": "dex-mod",
       "option2Good": "You manage to finagle the lock open, recieving the truck's content.",
       "option2GoodRes": "item",
       "option2Bad": "After trying for several minutes, you fail to pick the lock.",
@@ -399,24 +471,26 @@
       "option3BadRes": ""
     },
     {
-      "id": 1,
+      "id": 2,
       "type": "treasure",
-      "name": "Treasure Chest",
+      "name": "Test",
       "item": 3,
       "gold": 25,
       "damage": 1,
       "description": "A large, very heavy trunk sits in front of you. There is a lock on it. What would you like to do? You could Bash it open, Leave it alone, try to Pick the lock, or use a Key if you have one.",
       "prelude": "the room seems oddly quiet. There is no odor or sights that immediately catch your attention. ",
       "option1": "bash",
-      "option1Test": "str",
+      "option1Test": "str-mod",
       "option1Good": "You manage to successfully destroy the lock, recieving the truck's content.",
       "option1GoodRes": "pot",
       "option1Bad": "You completely fail to destroy the lock, and now you've hurt yourself.",
+      "option1BadRes": "HP",
       "option2": "pick",
-      "option2Test": "dex",
+      "option2Test": "dex-mod",
       "option2Good": "You manage to finagle the lock open, recieving the truck's content.",
       "option2GoodRes": "item",
       "option2Bad": "After trying for several minutes, you fail to pick the lock.",
+      "option2BadRes": "",
       "option3": "key",
       "option3Test": "key",
       "option3Good": "The key fits! you recieve the truck's content.",
@@ -443,7 +517,7 @@
     {
       "id": 3,
       "type": "armor",
-      "name": "leather Armor",
+      "name": "Leather Armor",
       "damage": 2,
       "stat": "AC"
     },
@@ -464,21 +538,21 @@
     {
       "id": 6,
       "type": "spell-1",
-      "name": "Firebolt",
+      "name": "firebolt",
       "damage": 6,
       "stat": "int-mod"
     },
     {
       "id": 7,
       "type": "spell-2",
-      "name": "Jolt",
+      "name": "jolt",
       "damage": 8,
       "stat": "int-mod"
     },
     {
       "id": 8,
       "type": "spell-3",
-      "name": "Viscious Mockery",
+      "name": "vicious mockery",
       "damage": 9,
       "stat": "cha-mod"
     }
