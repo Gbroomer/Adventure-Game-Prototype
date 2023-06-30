@@ -6,7 +6,7 @@ let leaveSwitch = false
 let lookSwitch = false
 let equipSwitch = true
 let hintSwitch = false
-
+let key = false
 let guess = 0
 
 let left = []
@@ -57,7 +57,7 @@ const treasureRoom = (inputOption, gameText) => {
     let skillCheck = Math.floor(Math.random() * 20) + (playerCharacter[skillType] + 1)
     console.log(`skillCheck: ${skillCheck}`)
 
-    if (skillCheck >= skillDC) {
+    if (skillCheck >= skillDC || key === true) {
 
         if (currentLocation[`option${inputOption}GoodRes`] === "key") {
 
@@ -86,7 +86,7 @@ const treasureRoom = (inputOption, gameText) => {
             gameText.textContent = `${currentLocation[`option${inputOption}Good`]}`
         }
         leaveSwitch = true
-
+        key = false;
     } else {
 
         if (currentLocation[`option${inputOption}BadRes`] === "HP") {
@@ -177,7 +177,7 @@ const npcRoom = (inputOption, gameText) => {
 
         } else if (currentLocation[`option${inputOption}GoodRes`] === "item") {
 
-           gameText.textContent = `${currentLocation[`option${inputOption}Good`]} You got a ${items[`${currentLocation.item}` - 1].name}. This is a ${items[`${currentLocation.item}` - 1].type} item. Would you like to equip it?`
+            gameText.textContent = `${currentLocation[`option${inputOption}Good`]} You got a ${items[`${currentLocation.item}` - 1].name}. This is a ${items[`${currentLocation.item}` - 1].type} item. Would you like to equip it?`
 
             equipSwitch = true
 
@@ -637,7 +637,7 @@ const runNextRooms = (gameText) => {
     locationRight = right[rightRNG]
     locationForward = forward[forwardRNG]
 
-    if(locationLeft === undefined && locationRight === undefined && locationForward === undefined) {
+    if (locationLeft === undefined && locationRight === undefined && locationForward === undefined) {
         victory(gameText)
     } else {
         if (locationLeft === undefined) {
@@ -646,23 +646,23 @@ const runNextRooms = (gameText) => {
             locationLeftText = `There is a room to your Left. ${locationLeft.prelude}`
             left.splice(leftRNG, 1)
         }
-    
+
         if (locationRight === undefined) {
             locationRightText = ""
-    
+
         } else {
             locationRightText = `There is a room to your Right. ${locationRight.prelude}`
             right.splice(rightRNG, 1)
         }
-    
-    
+
+
         if (locationForward === undefined) {
             locationForwardText = ""
         } else {
             locationForwardText = `Looking Forward there is another room. ${locationForward.prelude}`
             forward.splice(forwardRNG, 1)
         }
-    
+
         lookSwitch = true;
         gameText.textContent = `${locationLeftText} ${locationRightText} ${locationForwardText} `
 
@@ -707,10 +707,10 @@ const runCombat = (input, gameText) => {
     } else if (input === playerCharacter[`off-hand`].name.toLowerCase()) {
         attackRolls(playerCharacter[`off-hand`], gameText)
     } else if (input === playerCharacter[`spell-1`].name.toLowerCase()) {
-        
+
         attackRolls(playerCharacter[`spell-1`], gameText)
     } else if (input === playerCharacter[`spell-2`].name.toLowerCase()) {
-        
+
         attackRolls(playerCharacter[`spell-2`], gameText)
     } else if (input === playerCharacter[`spell-3`].name.toLowerCase()) {
         attackRolls(playerCharacter[`spell-3`], gameText)
@@ -851,6 +851,7 @@ const runCurrentRoom = (input, room, gameText) => {
                 if (currentLocation.option1Test === "key") {
                     if (playerCharacter.key > 0) {
                         playerCharacter.key--
+                        key = true
                         treasureRoom(inputOption, gameText)
                     } else {
                         alert('You do not have a key')
@@ -918,35 +919,49 @@ const runCurrentRoom = (input, room, gameText) => {
                 attackRolls(playerCharacter[`spell-5`], gameText)
             }
         }
-
-
     }
 }
 //Handles leaving a room and entering the next room
 const runRoomChange = (input, room, gameText) => {
 
-    lookSwitch = false
-    hintSwitch = false
-    guess = 0
-
     if (input === "left") {
 
-        currentLocation = locationLeft
-        room.textContent = currentLocation.name
-        gameText.textContent = `You leave the room you're in and head left. ${currentLocation.description}`
+        if (locationLeft === undefined) {
+            alert('There is no room to the left')
+        } else {
+            lookSwitch = false
+            hintSwitch = false
+            guess = 0
+            currentLocation = locationLeft
+            room.textContent = currentLocation.name
+            gameText.textContent = `You leave the room you're in and head left. ${currentLocation.description}`
+        }
 
     } if (input === "right") {
 
-        currentLocation = locationRight
-        room.textContent = currentLocation.name
-        gameText.textContent = `You leave the room you're in and head right. ${currentLocation.description}`
+        if (locationRight === undefined) {
+            alert('There is no room to the left')
+        } else {
+            lookSwitch = false
+            hintSwitch = false
+            guess = 0
+            currentLocation = locationRight
+            room.textContent = currentLocation.name
+            gameText.textContent = `You leave the room you're in and head right. ${currentLocation.description}`
+        }
 
     } if (input === "forward") {
 
-        currentLocation = locationForward
-        room.textContent = currentLocation.name
-        gameText.textContent = `You leave the room you're in and head forward. ${currentLocation.description}`
-
+        if (locationForward === undefined) {
+            alert('There is no room to the left')
+        } else {
+            lookSwitch = false
+            hintSwitch = false
+            guess = 0
+            currentLocation = locationForward
+            room.textContent = currentLocation.name
+            gameText.textContent = `You leave the room you're in and head forward. ${currentLocation.description}`
+        }
     }
 }
 //Handles prompts to the player in regards to what items they would like to have or not have equipped. (currently not functional)
@@ -995,7 +1010,7 @@ const runInputBox = (gameDialogueInput, room, gameText, gameScreen, startGameFor
 
             }
 
-        } 
+        }
         else {
 
             if (gameDialogueInput.value.toLowerCase() === "leave") {

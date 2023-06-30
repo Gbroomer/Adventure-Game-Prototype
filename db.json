@@ -372,6 +372,75 @@
         "stat": "str-mod"
       },
       "id": 5
+    },
+    {
+      "name": "Psycho",
+      "currentHp": 12,
+      "totalHp": 12,
+      "AC": 11,
+      "str": 10,
+      "dex": 12,
+      "con": 14,
+      "wis": 12,
+      "int": 14,
+      "cha": 11,
+      "str-mod": 0,
+      "dex-mod": 1,
+      "con-mod": 2,
+      "wis-mod": 1,
+      "int-mod": 2,
+      "cha-mod": 0,
+      "potions": 0,
+      "main-hand": {
+        "id": 5,
+        "name": "punch",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "off-hand": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "armor": {
+        "name": "empty",
+        "damage": 0,
+        "stat": "str-mod"
+      },
+      "ranged": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "gold": 0,
+      "key": 0,
+      "spell-1": {
+        "id": 6,
+        "name": "firebolt",
+        "damage": 6,
+        "stat": "int-mod"
+      },
+      "spell-2": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-3": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-4": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-5": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "id": 6
     }
   ],
   "Monsters": [
