@@ -593,7 +593,7 @@ const initCharMaker = () => {
                 },
                 "armor": {
                     "name": "empty",
-                    "damage": 2,
+                    "damage": 0,
                     "stat": "str-mod"
                 },
                 "ranged": {
@@ -755,7 +755,14 @@ const attackRolls = (playerAttack, gameText) => {
 
     let attackRoll = Math.floor(Math.random() * 20) + (playerCharacter[`${attackStat}`] + 3)
 
-    let monAttackDC = playerCharacter.AC + playerCharacter.armor.damage
+    let shieldAC = 0
+
+    if (playerCharacter['off-hand'].name === 'shield') {
+        
+        shieldAC = 2
+    }
+
+    let monAttackDC = playerCharacter.AC + playerCharacter.armor.damage + shieldAC
 
     let monAttackRoll = Math.floor(Math.random() * 20) + (currentLocation.attackStat + 3)
 
