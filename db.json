@@ -236,22 +236,22 @@
       "id": 3
     },
     {
-      "name": "Tonkotsu Ramen",
-      "currentHp": 12,
-      "totalHp": 12,
+      "name": "Clarg",
+      "currentHp": 11,
+      "totalHp": 11,
       "AC": 12,
-      "str": 14,
+      "str": 10,
       "dex": 14,
-      "con": 12,
+      "con": 13,
       "wis": 10,
       "int": 14,
-      "cha": 8,
-      "str-mod": 2,
+      "cha": 12,
+      "str-mod": 0,
       "dex-mod": 2,
       "con-mod": 1,
       "wis-mod": 0,
       "int-mod": 2,
-      "cha-mod": -1,
+      "cha-mod": 1,
       "potions": 0,
       "main-hand": {
         "id": 5,
@@ -303,6 +303,75 @@
         "stat": "str-mod"
       },
       "id": 4
+    },
+    {
+      "name": "Psycho Cat",
+      "currentHp": 12,
+      "totalHp": 12,
+      "AC": 12,
+      "str": 10,
+      "dex": 14,
+      "con": 14,
+      "wis": 10,
+      "int": 14,
+      "cha": 10,
+      "str-mod": 0,
+      "dex-mod": 2,
+      "con-mod": 2,
+      "wis-mod": 0,
+      "int-mod": 2,
+      "cha-mod": 0,
+      "potions": 0,
+      "main-hand": {
+        "id": 5,
+        "name": "punch",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "off-hand": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "armor": {
+        "name": "empty",
+        "damage": 0,
+        "stat": "str-mod"
+      },
+      "ranged": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "gold": 0,
+      "key": 0,
+      "spell-1": {
+        "id": 6,
+        "name": "firebolt",
+        "damage": 6,
+        "stat": "int-mod"
+      },
+      "spell-2": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-3": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-4": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "spell-5": {
+        "name": "empty",
+        "damage": 2,
+        "stat": "str-mod"
+      },
+      "id": 5
     }
   ],
   "Monsters": [
@@ -343,7 +412,7 @@
       "damage": 6,
       "item": 7,
       "gold": 3,
-      "description":"A mass of rotten skin, explosed muscle and protruding bones stands before you. Whoever this person was before, they are now an undead abomination. Do you want to Attack them or try to Leave?",
+      "description": "A mass of rotten skin, explosed muscle and protruding bones stands before you. Whoever this person was before, they are now an undead abomination. Do you want to Attack them or try to Leave?",
       "combat": "The Zombie is shambling towards you, how would you like to attack?",
       "prelude": "The smell of rotten flesh accompanies low, gutteral moans. Something is shambling in here. ",
       "attack": "The Zombie charges you, attempting to slam and bite you with what remains of its jaw."
@@ -500,7 +569,7 @@
       "correct": "After declaring your answer, the grandfather clock opens up to reveal a hidden compartment!"
     },
     {
-    "id": 3,
+      "id": 3,
       "type": "puzzle",
       "name": "The Knave, Knight and Spy",
       "gold": 7,
@@ -511,7 +580,7 @@
       "hintTest": "int-mod",
       "answer": "paris",
       "correct": "After declaring your answer, Paris the spy deteriorates off the painting, revealing a hidden compartment!"
-  }
+    }
   ],
   "Treasure": [
     {
@@ -548,7 +617,7 @@
       "gold": 10,
       "damage": 1,
       "description": "Inside this room rests an armory of sorts. Nearly everything has rusted away, save what seems to be a decent banded Shield. It rests behind iron bars that have been locked. What would you like to do? You could Bash it open, Leave it alone, try to Pick the lock, or use a Key if you have one.",
-      "prelude": "the room seems oddly quiet. There is no odor or sights that immediately catch your attention. ",
+      "prelude": "You notice what looks like rusted equipment and an iron cage. ",
       "option1": "bash",
       "option1Test": "str-mod",
       "option1Good": "You manage to successfully destroy the lock, allowing you access inside.",
@@ -576,7 +645,7 @@
       "gold": 15,
       "damage": 5,
       "description": "The room radiates with magical energy. It is clear a wizard lived here long ago. Decayed books litter about the room. Sitting in a corner a small jewelry box rests. It seems it was haphazardly thrown down. It seems to have a magically enchanted lock on it. What would you like to do? You could Dissenchant it, Leave it alone, try to Bless it open, or use a Key if you have one.",
-      "prelude": "the room seems oddly quiet. There is no odor or sights that immediately catch your attention. ",
+      "prelude": "There is a low humming noise and you sense magic from this direction. ",
       "option1": "dissenchant",
       "option1Test": "int-mod",
       "option1Good": "You manage to successfully dissenchant the spell, opening the box.",
@@ -681,7 +750,7 @@
       "name": "shield",
       "damage": 2,
       "stat": "str-mod"
-    }, 
+    },
     {
       "id": 13,
       "type": "main-hand",

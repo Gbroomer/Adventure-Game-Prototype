@@ -19,12 +19,9 @@ const charSearch = () => {
     const charSearchForm = document.getElementById("character-search")
     charSearchForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        console.log('test')
         const charSearchInput = document.getElementById("char-search").value
-        console.log(charSearchInput)
 
         fetchChar(charSearchInput.toLowerCase()).then(() => {
-            console.log(fetchPlayer)
             if (fetchPlayer) {
 
                 const listCharacter = document.getElementById("characters")
@@ -56,7 +53,7 @@ const treasureRoom = (inputOption, gameText) => {
     console.log(`skillDC: ${skillDC}`)
 
     let skillType = currentLocation[`option${inputOption}Test`]
-    console.log(playerCharacter[skillType])
+
     let skillCheck = Math.floor(Math.random() * 20) + (playerCharacter[skillType] + 1)
     console.log(`skillCheck: ${skillCheck}`)
 
@@ -119,14 +116,12 @@ const puzzleRoom = (input, gameText) => {
     if (input === currentLocation.answer) {
         playerCharacter.golt += currentLocation.gold
 
-        gameText.textContent = `${currentLocation.correct} You gain ${currentLocation.gold} and find a ${items[`${currentLocation.item}` - 1].name}. This is a ${items[`${currentLocation.item}` - 1].type} item. Would you like to equip it?`
+        gameText.textContent = `${currentLocation.correct} You gain ${currentLocation.gold} gold and find a ${items[`${currentLocation.item}` - 1].name}. This is a ${items[`${currentLocation.item}` - 1].type} item. Would you like to equip it?`
 
         leaveSwitch = true
         equipSwitch = true
 
     } else if (input === "hint") {
-
-        console.log('hint fired')
 
         if (hintSwitch === false) {
 
@@ -168,7 +163,6 @@ const npcRoom = (inputOption, gameText) => {
 
     if (skillCheck >= skillDC) {
 
-        console.log('test')
         if (currentLocation[`option${inputOption}GoodRes`] === "key") {
 
             playerCharacter.key++
@@ -188,7 +182,6 @@ const npcRoom = (inputOption, gameText) => {
             equipSwitch = true
 
         } else if (currentLocation[`option${inputOption}GoodRes`] === "pot") {
-            console.log('test')
             playerCharacter.potions++
 
             gameText.textContent = `${currentLocation[`option${inputOption}Good`]} You gained a potion!`
@@ -238,7 +231,6 @@ async function generateAvailableRooms() {
 
 
     monsters.forEach(e => {
-        console.log(e)
         let RNG = Math.floor(Math.random() * 3) + 1
         if (RNG === 1) {
             left.push(e)
@@ -249,7 +241,6 @@ async function generateAvailableRooms() {
         }
     })
     npc.forEach(e => {
-        console.log(e)
         let RNG = Math.floor(Math.random() * 3) + 1
         if (RNG === 1) {
             left.push(e)
@@ -260,7 +251,6 @@ async function generateAvailableRooms() {
         }
     })
     puzzle.forEach(e => {
-        console.log(e)
         let RNG = Math.floor(Math.random() * 3) + 1
         if (RNG === 1) {
             left.push(e)
@@ -271,7 +261,6 @@ async function generateAvailableRooms() {
         }
     })
     treasure.forEach(e => {
-        console.log(e)
         let RNG = Math.floor(Math.random() * 3) + 1
         if (RNG === 1) {
             left.push(e)
@@ -298,7 +287,6 @@ function postCharacter() {
         },
         body: JSON.stringify(playerCharacter)
     })
-        .then(console.log(playerCharacter))
 }
 //Takes an object of character information, either from the db.json or from the (eventually) character creation section and adds their stats to the sidebar)
 const generateCharacter = (pcInfo) => {
@@ -332,8 +320,6 @@ const generateCharacter = (pcInfo) => {
     const gameMusic = document.getElementById("dungeon-music")
     gameMusic.volume = 0.5
     gameMusic.play()
-
-    console.log(playerCharacter[`main-hand`].name)
 
 }
 //Takes an input and searches the database for a match
@@ -410,7 +396,6 @@ const initCharMaker = () => {
             }
             strStatShow.textContent = `Strength: ${str}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(str, totalPoints, strCost)
         }
     })
     strDown.addEventListener("click", () => {
@@ -423,7 +408,6 @@ const initCharMaker = () => {
             str--
             strStatShow.textContent = `Strength: ${str}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(str, totalPoints, strCost)
         }
     })
     dexUp.addEventListener("click", () => {
@@ -436,7 +420,6 @@ const initCharMaker = () => {
                 dexCost = 2
                 dexCostText.textContent = `cost: ${dexCost}`
             }
-            console.log(dex, totalPoints, dexCost)
         }
     })
     dexDown.addEventListener("click", () => {
@@ -449,7 +432,6 @@ const initCharMaker = () => {
             dex--
             dexStatShow.textContent = `Dexterity: ${dex}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(dex, totalPoints, dexCost)
         }
     })
     conUp.addEventListener("click", () => {
@@ -462,7 +444,6 @@ const initCharMaker = () => {
                 conCost = 2
                 conCostText.textContent = `cost: ${conCost}`
             }
-            console.log(con, totalPoints, conCost)
         }
     })
     conDown.addEventListener("click", () => {
@@ -475,7 +456,6 @@ const initCharMaker = () => {
             con--
             conStatShow.textContent = `Constitution: ${con}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(con, totalPoints, conCost)
         }
     })
     wisUp.addEventListener("click", () => {
@@ -488,7 +468,6 @@ const initCharMaker = () => {
                 wisCost = 2
                 wisCostText.textContent = `cost: ${wisCost}`
             }
-            console.log(wis, totalPoints, wisCost)
         }
     })
     wisDown.addEventListener("click", () => {
@@ -501,7 +480,6 @@ const initCharMaker = () => {
             wis--
             wisStatShow.textContent = `Wisdom: ${wis}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(wis, totalPoints, wisCost)
         }
     })
     intUp.addEventListener("click", () => {
@@ -514,7 +492,6 @@ const initCharMaker = () => {
                 intCost = 2
                 intCostText.textContent = `cost: ${intCost}`
             }
-            console.log(int, totalPoints, intCost)
         }
     })
     intDown.addEventListener("click", () => {
@@ -527,7 +504,6 @@ const initCharMaker = () => {
             int--
             intStatShow.textContent = `Intelligence: ${int}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(int, totalPoints, intCost)
         }
     })
     chaUp.addEventListener("click", () => {
@@ -540,7 +516,6 @@ const initCharMaker = () => {
                 chaCost = 2
                 chaCostText.textContent = `cost: ${chaCost}`
             }
-            console.log(cha, totalPoints, chaCost)
         }
     })
     chaDown.addEventListener("click", () => {
@@ -553,7 +528,6 @@ const initCharMaker = () => {
             cha--
             chaStatShow.textContent = `Charisma: ${cha}`
             pointBuy.textContent = `Available Points: ${totalPoints}/27`
-            console.log(cha, totalPoints, chaCost)
         }
     })
     //grab Name input box and submit character Generation
@@ -564,8 +538,8 @@ const initCharMaker = () => {
         if (totalPoints === 0) {
             const generatedCharacter = {
                 "name": nameInput,
-                "currentHp": Math.floor((str - 10) / 2) + 10,
-                "totalHp": Math.floor((str - 10) / 2) + 10,
+                "currentHp": Math.floor((con - 10) / 2) + 10,
+                "totalHp": Math.floor((con - 10) / 2) + 10,
                 "AC": Math.floor((dex - 10) / 2) + 10,
                 "str": str,
                 "dex": dex,
@@ -631,10 +605,8 @@ const initCharMaker = () => {
                 }
             }
             fetchChar(generatedCharacter.name.toLowerCase()).then(res => {
-                console.log(fetchPlayer)
                 if (fetchPlayer === undefined) {
                     playerCharacter = generatedCharacter
-                    console.log(generatedCharacter)
                     generateCharacter(generatedCharacter)
                     postCharacter(playerCharacter)
                     startGameFromCharacterSubmission()
@@ -660,37 +632,42 @@ const runNextRooms = (gameText) => {
     let leftRNG = Math.floor(Math.random() * left.length)
     let rightRNG = Math.floor(Math.random() * right.length)
     let forwardRNG = Math.floor(Math.random() * forward.length)
-    // console.log(leftRNG, rightRNG, forwardRNG)
 
     locationLeft = left[leftRNG]
-    if (locationLeft === undefined) {
-        locationLeftText = ""
-    } else {
-        locationLeftText = `There is a room to your Left. ${locationLeft.prelude}`
-        left.splice(leftRNG, 1)
-    }
-
     locationRight = right[rightRNG]
-    if (locationRight === undefined) {
-        locationRightText = ""
-
-    } else {
-        locationRightText = `There is a room to your Right. ${locationRight.prelude}`
-        right.splice(rightRNG, 1)
-    }
-
-
     locationForward = forward[forwardRNG]
-    if (locationForward === undefined) {
-        locationForwardText = ""
+
+    if(locationLeft === undefined && locationRight === undefined && locationForward === undefined) {
+        victory(gameText)
     } else {
-        locationForwardText = `Looking Forward there is another room. ${locationForward.prelude}`
-        forward.splice(forwardRNG, 1)
+        if (locationLeft === undefined) {
+            locationLeftText = ""
+        } else {
+            locationLeftText = `There is a room to your Left. ${locationLeft.prelude}`
+            left.splice(leftRNG, 1)
+        }
+    
+        if (locationRight === undefined) {
+            locationRightText = ""
+    
+        } else {
+            locationRightText = `There is a room to your Right. ${locationRight.prelude}`
+            right.splice(rightRNG, 1)
+        }
+    
+    
+        if (locationForward === undefined) {
+            locationForwardText = ""
+        } else {
+            locationForwardText = `Looking Forward there is another room. ${locationForward.prelude}`
+            forward.splice(forwardRNG, 1)
+        }
+    
+        lookSwitch = true;
+        gameText.textContent = `${locationLeftText} ${locationRightText} ${locationForwardText} `
+
     }
 
-    lookSwitch = true;
-
-    gameText.textContent = `${locationLeftText} ${locationRightText} ${locationForwardText} `
 
 }
 //Runs the Combat Scenario (currently not functional)
@@ -730,13 +707,12 @@ const runCombat = (input, gameText) => {
     } else if (input === playerCharacter[`off-hand`].name.toLowerCase()) {
         attackRolls(playerCharacter[`off-hand`], gameText)
     } else if (input === playerCharacter[`spell-1`].name.toLowerCase()) {
-        console.log(playerCharacter[`spell-1`].name)
+        
         attackRolls(playerCharacter[`spell-1`], gameText)
     } else if (input === playerCharacter[`spell-2`].name.toLowerCase()) {
-        console.log(playerCharacter[`spell-2`].name)
+        
         attackRolls(playerCharacter[`spell-2`], gameText)
     } else if (input === playerCharacter[`spell-3`].name.toLowerCase()) {
-        console.log(input === playerCharacter[`spell-3`].name)
         attackRolls(playerCharacter[`spell-3`], gameText)
     } else if (input === playerCharacter[`spell-4`].name.toLowerCase()) {
         attackRolls(playerCharacter[`spell-4`], gameText)
@@ -758,7 +734,7 @@ const attackRolls = (playerAttack, gameText) => {
     let shieldAC = 0
 
     if (playerCharacter['off-hand'].name === 'shield') {
-        
+
         shieldAC = 2
     }
 
@@ -1056,7 +1032,6 @@ const runInputBox = (gameDialogueInput, room, gameText, gameScreen, startGameFor
             }
         }
         startGameForm.reset()
-        console.log(leaveSwitch)
     })
 }
 //This function starts the game from the Replay a Previous Character submission or from Character Generation. 
@@ -1068,7 +1043,7 @@ function startGameFromCharacterSubmission() {
     document.body.appendChild(gameScreen)
 
 
-    search("http://localhost:3000/Treasure/2").then((data) => {
+    search("http://localhost:3000/Start/1").then((data) => {
 
         currentLocation = data
 
@@ -1115,6 +1090,11 @@ async function search(argument) {
 //Currently nothing crazy, just a Game Over notice
 function gameOver(gameText) {
     gameText.textContent = `GAME OVER! You have died.`
+    document.getElementById('input-form').innerHTML = ''
+}
+//Currently nothing crazy, just a victory notice
+function victory(gameText) {
+    gameText.textContent = `You have exhausted all currently available rooms and won!`
     document.getElementById('input-form').innerHTML = ''
 }
 //Shows character's Inventory
