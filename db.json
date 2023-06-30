@@ -523,7 +523,7 @@
       "item": 3,
       "gold": 15,
       "description": "A strange man dressed only in rags dances before you. He is missing a large chunk of his nose, and his face is tattooed like that of a motley vest. Through a smile he sings: 'Under the sea, smoke rises in bubbles, and flames burn green and blue and black! I know, I know, oh, oh, oh!'  You could Attack him, try to Understand him, Leave him or Seduce him.",
-      "prelude": "You hear the sounds of dancing, and someone singing to them selves. There is the jingling of coin and the clang of metal. ",
+      "prelude": "You hear the sounds of dancing, and someone singing to them selves. ",
       "attack": "The Motley Jester sends a roundhouse kick in your direction!",
       "combat": "The Motley Jester giggles and laughs, singing: 'In the dark the dead are dancing! I know, I know, oh oh oh! And goads you to attack him.",
       "option1": "understand",
@@ -740,7 +740,7 @@
     {
       "id": 11,
       "type": "spell-5",
-      "name": "Fireball",
+      "name": "fireball",
       "damage": 10,
       "stat": "int-mod"
     },
